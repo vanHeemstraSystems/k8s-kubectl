@@ -29,11 +29,11 @@ Hence, container name is: k8s-kubectl
 $ sudo docker cp k8s-kubectl:/usr/local/bin/kubectl ./kubectl
 ```
 
-4) Install kubectl from the location you copied it to (current directory) and remove the temporary copy (if local directory is other than installation directory)
+4) Make kubectl executable from the location you copied it to (current directory) and move it to its execution directory (if current directory is other than execution directory)
 
 ```
-$ sudo docker install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-$ rm kubectl
+$ chmod +x ./kubectl
+$ sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
 4) Check if the kubectl binary executable is now available on the Docker host:
