@@ -32,23 +32,49 @@ $ sudo docker cp k8s-kubectl:/usr/local/bin/kubectl ./kubectl
 4) Make kubectl executable from the location you copied it to (current directory) and move it to its execution directory (if current directory is other than execution directory)
 
 ```
-$ chmod +x ./kubectl
+$ sudo chmod +x ./kubectl
 $ sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-4) Check if the kubectl binary executable is now available on the Docker host:
+5) Set the kubectl executable to the environment PATH variable
+
+Modify .bash_profile
+```
+vi ~/.bash_profile
+```
+
+Then somewhere in the file add/modify your paths seperated by :
+```
+PATH=$PATH:$HOME/bin:/usr/local/bin/kubectl
+export PATH
+```
+
+Then reload your profile:
+```
+source ~/.bash_profile
+```
+
+or logout and login again.
+
+If you check PATH it should include your newly added paths
+
+```
+$ echo $PATH
+```
+
+6) Check if the kubectl binary executable is now available on the Docker host:
 
 ```
 $ sudo kubectl version --client
 ```
 
-5) (Optional) look at the kubectl help page:
+7) (Optional) look at the kubectl help page:
 
 ```
 $ sudo kubectl --help
 ```
 
-6) After a successful installation, you can stop the Docker container k8s-kubectl from running and remove it as it is no longer required
+8) After a successful installation, you can stop the Docker container k8s-kubectl from running and remove it as it is no longer required
 
 ```
 $ docker container stop [CONTAINER ID]
