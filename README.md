@@ -45,7 +45,7 @@ vi ~/.bash_profile
 
 Then somewhere in the file add/modify your paths seperated by :
 ```
-PATH=$PATH:$HOME/bin:/usr/local/bin/kubectl
+PATH=$PATH:$HOME/bin:/usr/local/bin
 export PATH
 ```
 
